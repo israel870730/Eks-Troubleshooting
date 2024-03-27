@@ -16,5 +16,5 @@ RUN adduser -D troubleshooting
 # Set the non-privileged user as the default user
 USER troubleshooting
 
-ENTRYPOINT ["telnet"] 
-#ENTRYPOINT ["ping"] 
+#ENTRYPOINT ["telnet"] 
+ENTRYPOINT ["ping"] 

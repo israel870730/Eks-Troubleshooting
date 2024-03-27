@@ -5,11 +5,6 @@ pipeline {
         string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'Tag of the Docker image')
     }
     
-    environment {
-        dockerImage =''
-        registry = "870730/ekstroubleshooting"
-    }
-    
     stages {
         stage('Checkout') {
             steps {
@@ -20,7 +15,7 @@ pipeline {
         stage('Build Docker Img'){
             steps {
                 script {
-                    dockerImage = docker.build registry
+                    dockerImage = docker.build "870730/ekstroubleshooting"
                 }   
             }   
         }

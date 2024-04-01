@@ -24,7 +24,7 @@ USER troubleshooting
 
 # Command to run ping by default
 #ENTRYPOINT ["telnet"] 
-ENTRYPOINT ["ping", "-c", "5"]
+ENTRYPOINT ["ping", "-c", "10"]
 #ENTRYPOINT ["ping"] 
 #CMD ["-c", "5"]
 #CMD ["-c 5"]

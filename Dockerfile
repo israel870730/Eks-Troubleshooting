@@ -2,7 +2,7 @@
 FROM alpine
 
 # Install tools
-RUN apk update && apk add --no-cache busybox-extras
+#RUN apk update && apk add --no-cache busybox-extras
 
 # Install ping command
 RUN apk update && apk add --no-cache iputils
@@ -24,4 +24,4 @@ USER troubleshooting
 
 # Command to run ping by default
 #ENTRYPOINT ["telnet"] 
-#ENTRYPOINT ["ping"] 
+ENTRYPOINT ["ping -c 5"] 

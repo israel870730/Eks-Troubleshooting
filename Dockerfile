@@ -17,4 +17,4 @@ RUN adduser -D troubleshooting
 USER troubleshooting
 
 #ENTRYPOINT ["telnet"] 
-ENTRYPOINT ["ping"] 
+#ENTRYPOINT ["ping"] 

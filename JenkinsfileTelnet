@@ -12,12 +12,16 @@ pipeline {
             }
         }
         
-        stage('Build Docker Img'){
+        stage('Build Docker Image in Subdirectory') {
             steps {
                 script {
-                    dockerImage = docker.build "870730/ekstroubleshooting"
-                }   
-            }   
+                    // Cambiar al directorio donde se encuentra el Dockerfile
+                    dir('telnet/') {
+                        // Construir la imagen Docker desde el Dockerfile en el directorio especificado
+                        dockerImage = docker.build "870730/ekstroubleshooting"
+                    }
+                }
+            }
         }
         
         stage('Docker Tag'){

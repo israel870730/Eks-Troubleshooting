@@ -34,7 +34,7 @@ USER troubleshooting
 COPY entrypoint.sh /entrypoint.sh
 
 # Make the script executable
-RUN chmod +x /entrypoint.sh
+RUN chown troubleshooting:troubleshooting /entrypoint.sh && chmod +x /entrypoint.sh
 
 # Command to run the entrypoint script by default
 ENTRYPOINT ["/entrypoint.sh"]

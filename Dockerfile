@@ -7,6 +7,12 @@ FROM alpine
 # Install ping command
 RUN apk update && apk add --no-cache iputils
 
+# Copy the entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+
+# Make the script executable
+RUN chown troubleshooting:troubleshooting /entrypoint.sh && chmod +x /entrypoint.sh
+
 # To delete apk to avoid additional installations
 RUN apk del apk-tools
 
@@ -29,12 +35,6 @@ USER troubleshooting
 #Probar ping con ENTRYPOINT y CMD de esta forma
 #ENTRYPOINT ["ping"]
 #CMD ["-c", "10"]
-
-# Copy the entrypoint script
-COPY entrypoint.sh /entrypoint.sh
-
-# Make the script executable
-RUN chown troubleshooting:troubleshooting /entrypoint.sh && chmod +x /entrypoint.sh
 
 # Command to run the entrypoint script by default
 ENTRYPOINT ["/entrypoint.sh"]

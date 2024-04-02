@@ -17,14 +17,24 @@ RUN rm -rf /etc/apk
 RUN adduser -D troubleshooting
 
 # Set permissions for ping command
-RUN chmod u+s /bin/ping
+#RUN chmod u+s /bin/ping
 
 # Set the non-privileged user as the default user
 USER troubleshooting
 
-# Command to run ping by default
+# Command to run ping/telnet by default
 #ENTRYPOINT ["telnet"] 
-ENTRYPOINT ["ping", "-c", "10"]
-#ENTRYPOINT ["ping"] 
-#CMD ["-c", "5"]
-#CMD ["-c 5"]
+#ENTRYPOINT ["ping", "-c", "10"]
+
+#Probar ping con ENTRYPOINT y CMD de esta forma
+#ENTRYPOINT ["ping"]
+#CMD ["-c", "10"]
+
+# Copy the entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+
+# Make the script executable
+RUN chmod +x /entrypoint.sh
+
+# Command to run the entrypoint script by default
+ENTRYPOINT ["/entrypoint.sh"]

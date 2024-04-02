@@ -7,12 +7,6 @@ FROM alpine
 # Install ping command
 RUN apk update && apk add --no-cache iputils
 
-# Copy the entrypoint script
-COPY entrypoint.sh /entrypoint.sh
-
-# Make the script executable
-RUN chown troubleshooting:troubleshooting /entrypoint.sh && chmod +x /entrypoint.sh
-
 # To delete apk to avoid additional installations
 RUN apk del apk-tools
 
@@ -21,6 +15,12 @@ RUN rm -rf /etc/apk
 
 # Create a non-privileged user
 RUN adduser -D troubleshooting
+
+# Copy the entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+
+# Make the script executable
+RUN chown troubleshooting:troubleshooting /entrypoint.sh && chmod +x /entrypoint.sh
 
 # Set permissions for ping command
 #RUN chmod u+s /bin/ping

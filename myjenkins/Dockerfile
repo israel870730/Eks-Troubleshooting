@@ -1,5 +1,5 @@
 # Especificar la imagen base de Jenkins
-FROM jenkins/jenkins
+FROM jenkins/jenkins:lts
 
 # Actualizar el índice de paquetes e instalar paquetes necesarios para instalar Docker
 USER root
@@ -8,13 +8,14 @@ RUN apt-get update \
                           ca-certificates \
                           curl \
                           gnupg \
-                          lsb-release
+                          lsb-release \
+                          software-properties-common
 
 # Agregar la clave GPG oficial de Docker
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
 # Agregar el repositorio de Docker al sistema
-RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+RUN echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
 
 # Instalar Docker
 RUN apt-get update \

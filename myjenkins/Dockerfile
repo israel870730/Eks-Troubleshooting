@@ -52,5 +52,5 @@ RUN sed -i 's/^ExecStart=.*/ExecStart=\/usr\/bin\/dockerd -H unix:\/\/\/var\/run
 # Expose Docker daemon port
 EXPOSE 2375
 
-# Start Docker daemon
-CMD ["/bin/bash", "-c", "service docker start && tail -f /dev/null"]
+# # Start Docker daemon
+# CMD ["/bin/bash", "-c", "service docker start && tail -f /dev/null"]

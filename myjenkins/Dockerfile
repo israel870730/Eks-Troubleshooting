@@ -21,5 +21,11 @@ RUN echo "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_releas
 RUN apt-get update \
     && apt-get install -y docker-ce docker-ce-cli containerd.io
 
+# Añadir el usuario jenkins al grupo docker
+RUN usermod -aG docker jenkins
+
 # Volver al usuario jenkins
 USER jenkins
+
+# Iniciar el servicio de Docker
+CMD ["sh", "-c", "sudo service docker start && /sbin/tini -- /usr/local/bin/jenkins.sh"]

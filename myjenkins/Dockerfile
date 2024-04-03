@@ -12,10 +12,10 @@ RUN apt-get update \
                           software-properties-common
 
 # Agregar la clave GPG oficial de Docker
-RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 
 # Agregar el repositorio de Docker al sistema
-RUN echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
+RUN echo "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
 
 # Instalar Docker
 RUN apt-get update \

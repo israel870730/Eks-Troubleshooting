@@ -10,8 +10,8 @@ RUN apk del apk-tools
 # To delete the folder "/etc/apk" to block the access at the repositories
 RUN rm -rf /etc/apk
 
-# Create a non-privileged user
-RUN adduser -D troubleshooting
+# Create a non-privileged user with /bin/false as shell
+RUN adduser -D -s /bin/false troubleshooting
 
 # Set permissions for ping command
 RUN chmod u+s /bin/ping
@@ -21,9 +21,6 @@ COPY entrypoint.sh /entrypoint.sh
 
 # Dar permisos de ejecución al script
 RUN chmod +x /entrypoint.sh
-
-# Eliminar bash
-RUN rm /bin/bash
 
 # Set the non-privileged user as the default user
 USER troubleshooting

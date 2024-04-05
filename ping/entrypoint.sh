@@ -1,8 +1,11 @@
 #!/bin/sh
-# Permitir solo el comando ping
+# Verificar que solo se permita ejecutar el comando ping
 if [ "$1" != "ping" ]; then
-  echo "No se permite ejecutar otros comandos"
+  echo "Solo se permite ejecutar el comando ping"
   exit 1
 fi
-# Ejecutar el comando ping con los argumentos pasados
-exec ping "$@"
+
+# Ejecutar el comando ping con los argumentos proporcionados
+shift  # Eliminar el primer argumento "ping"
+exec /bin/ping "$@"
+

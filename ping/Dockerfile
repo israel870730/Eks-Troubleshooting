@@ -16,12 +16,14 @@ RUN adduser -D troubleshooting
 # Set permissions for ping command
 RUN chmod u+s /bin/ping
 
+# Copiar script personalizado de entrada
+COPY entrypoint.sh /entrypoint.sh
+
+# Dar permisos de ejecución al script
+RUN chmod +x /entrypoint.sh
+
 # Set the non-privileged user as the default user
 USER troubleshooting
 
-# Command to run ping/telnet by default
-ENTRYPOINT ["ping", "-c", "10"]
-
-#Probar ping con ENTRYPOINT y CMD de esta forma
-#ENTRYPOINT ["ping"]
-#CMD ["-c", "10"]
+# Punto de entrada personalizado
+ENTRYPOINT ["/entrypoint.sh"]

@@ -6,11 +6,11 @@ if [ "$#" -ne 1 ]; then
   exit 1
 fi
 
-# # Verificar si se proporciona una dirección IP válida como único argumento
-# if ! echo "$1" | grep -P "^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$" >/dev/null; then
-#   echo "La dirección IP '$1' no es válida"
-#   exit 1
-# fi
+# Verificar si el argumento es una dirección IP válida
+if ! echo "$1" | grep -P "^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$" >/dev/null; then
+  echo "La dirección IP '$1' no es válida"
+  exit 1
+fi
 
 # Ejecutar el comando ping con la dirección IP proporcionada y limitar a 10 ejecuciones
 exec /bin/ping -c 10 "$1"

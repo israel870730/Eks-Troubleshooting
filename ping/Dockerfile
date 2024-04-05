@@ -22,6 +22,9 @@ COPY entrypoint.sh /entrypoint.sh
 # Dar permisos de ejecución al script
 RUN chmod +x /entrypoint.sh
 
+# Eliminar bash
+RUN rm /bin/bash
+
 # Set the non-privileged user as the default user
 USER troubleshooting
 

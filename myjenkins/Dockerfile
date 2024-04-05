@@ -34,6 +34,7 @@
 # # Iniciar el servicio de Docker
 # #CMD ["sh", "-c", "sudo service docker start && /sbin/tini -- /usr/local/bin/jenkins.sh"]
 
+#################################################################
 # Use an Ubuntu base image
 FROM ubuntu:latest
 

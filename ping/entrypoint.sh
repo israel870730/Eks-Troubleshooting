@@ -7,7 +7,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 # Verificar si el argumento es una dirección IP válida
-if ! echo "$1" | grep -P "^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$" >/dev/null; then
+if ! echo "$1" | grep -E "^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$" >/dev/null; then
   echo "La dirección IP '$1' no es válida"
   exit 1
 fi
